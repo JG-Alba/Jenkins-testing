@@ -3,7 +3,7 @@ version: '3.8'
 services:
   jenkins:
     image: jenkins/jenkins
-    container_name: jenkins3
+    container_name: jenkins-test
     privileged: true
     ports:
       - "9080:8080"
