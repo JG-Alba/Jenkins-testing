@@ -46,10 +46,10 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'gitid', usernameVariable: 'GITHUB_USER')]) {
                     sh 'rm -rf TFG'
-                    sh 'git clone --branch produccion https://github.com/JG-Alba/TFG.git'
-                    sh '''git config --global --add safe.directory /var/jenkins_home/workspace/prueba/TFG
+                    sh 'git clone --branch produccion https://github.com/JG-Alba/Jenkins-testing.git'
+                    sh '''git config --global --add safe.directory /var/jenkins_home/workspace/prueba/Jenkins-testing
 '''
-                    sh 'cp -r Dockerfile wordpress TFG && cd TFG && git add . && git push https://${GITHUB_USER}:${gitid}@github.com/JG-Alba/TFG.git'
+                    sh 'cp -r Dockerfile wordpress TFG && cd TFG && git add . && git push https://${GITHUB_USER}:${gitid}@github.com/JG-Alba/Jenkins-testing.git'
                 }
                 withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
 	            	sh 'docker tag tfg-jesus:test soramatoi/tfg-jesus:stable'
