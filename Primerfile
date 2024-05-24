@@ -21,6 +21,5 @@ USER jenkins
 # Añadir el usuario jenkins al grupo docker
 RUN sudo usermod -aG docker jenkins
 RUN newgrp docker
-RUN docker network create jenkins
 # Cambiar al directorio de inicio
 WORKDIR /var/jenkins_home
