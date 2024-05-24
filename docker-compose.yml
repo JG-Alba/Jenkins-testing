@@ -1,37 +1,49 @@
-version: '3.8'
+version: '3'
 
 services:
   jenkins:
-    image: jenkins/jenkins
-    container_name: jenkins-test
+    build: 
+      context: .
+      dockerfile: Primerfile
+    container_name: jenkins
     privileged: true
+    networks:
+      - jenkins
     ports:
       - "9080:8080"
       - "50000:50000"
       - "9070:9070"
     volumes:
       - /opt/jenkins_home:/var/jenkins_home
-    networks:
-      - jenkins_network
+    command: --httpPort=8080
+    restart: always
+    environment:
+      TZ: "Europe/Madrid"
+    extra_hosts:
+      - "dockerhost:172.17.0.1"
+    depends_on:
+      - prometheus
+      - grafana
 
   prometheus:
     image: prom/prometheus
     container_name: prometheus
+    networks:
+      - jenkins
     ports:
       - "9090:9090"
     volumes:
       - /opt/prometheus.yml:/etc/prometheus/prometheus.yml
-    networks:
-      - jenkins_network
+    restart: always
 
   grafana:
     image: grafana/grafana
     container_name: grafana
+    networks:
+      - jenkins
     ports:
       - "3000:3000"
-    networks:
-      - jenkins_network
+    restart: always
 
 networks:
-  jenkins_network:
-    driver: bridge
+  jenkins:
