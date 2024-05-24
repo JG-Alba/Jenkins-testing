@@ -1,0 +1,25 @@
+FROM jenkins/jenkins:latest
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y \
+    apache2-utils \
+    nano \
+    sudo \
+    netcat-traditional \
+    docker.io \
+    bc \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+# Configurar sudoers para que el usuario jenkins tenga acceso root sin contraseña
+RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# Cambiar al usuario jenkins
+USER jenkins
+
+# Añadir el usuario jenkins al grupo docker
+RUN sudo usermod -aG docker jenkins
+RUN newgrp docker
+# Cambiar al directorio de inicio
+WORKDIR /var/jenkins_home
