@@ -63,7 +63,7 @@ pipeline {
             steps {
 	                sh 'docker stop appjenkins'
 	                sh 'docker pull soramatoi/tfg-jesus:stable'
-	                sh 'docker run --rm --name wordjenkins --network jenkins -d -p 9070:80 soramatoi/tfg-jesus:stable'
+	                sh 'docker run --rm --name cpagina --network jenkins -d -p 9070:80 soramatoi/tfg-jesus:stable'
         }
     }
     }
