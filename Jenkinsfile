@@ -47,6 +47,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'gitid', usernameVariable: 'GITHUB_USER')]) {
                     sh 'rm -rf Jenkins-testing'
                     sh 'git clone --branch produccion https://github.com/JG-Alba/Jenkins-testing.git'
+                    sh 'git config --global user.email "jg.alba97@gmai.com"'
+                    sh 'git config --global user.name "JG-Alba"'
                     sh '''git config --global --add safe.directory /var/jenkins_home/workspace/prueba/Jenkins-testing
 '''
                     sh 'cp -r Dockerfile Jenkins-testing && cd Jenkins-testing && git add . && git commit -m produccion &&git push https://${GITHUB_USER}:${gitid}@github.com/JG-Alba/Jenkins-testing.git'
