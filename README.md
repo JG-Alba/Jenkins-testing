@@ -83,14 +83,7 @@ Necesario para calcular algunos datos que hemos introducido en nuestro Pipeline
 apache2-utils
 Necesario para algunas utilidades que hemos introducido en nuestro pipeline
 
-
-## 5. Preparación del equipo
-
-Para preparar el equipo necesitaremos instalar Docker de primera mano.
-En primera instancia si tenemos un Debian superior al 10 hemos introducido en nuestro pipeline
-
-
-## 5. Preparación del equipo
+## 4. Preparación del equipo
 
 Para preparar el equipo necesitaremos instalar Docker de primera mano.
 En primera instancia si tenemos un Debian superior al 10 deberíamos poder instalar Docker haciendo un simple
@@ -136,7 +129,7 @@ Con esto listo damos paso a la construcción de la estructura del proyecto.
 
 
 
-## 6. Desarrollo del Proyecto
+## 5. Desarrollo del Proyecto
 
 Antes de comenzar, he de matizar que todo este proyecto puede hacerse sin docker y con máquinas físicas que tengan el software indicado, por lo que sí hay una manera de instalar el programa en físico en el equipo la obviaré ya que mi proyecto es solamente con docker y ver sus límites.
 Jenkins:
@@ -321,7 +314,7 @@ Si todas las pruebas son correctas, se subirán el dockerfile y el index.html a 
 Tras esto, se detendrá todo contenedor de pruebas y la pagina sera subida a producción, se hará un despliegue con la imagen que hemos subido a DockerHub
 
 
-## 7. Conclusiones y dificultades
+## 6. Conclusiones y dificultades
 
 Para comenzar me gustaría empezar por las dificultades que he tenido. Jenkins y los pipeline es una herramienta compleja que al principio puede resultar costosa de entender y no es difícil entender a simple vista, pero tras observar y trabajarlo puedes ver que los pipeline acaban siendo comando de ejecución normales y corrientes de todo sistema linux pero lanzándolos con algunos comandos extra.
 
@@ -333,7 +326,7 @@ Si sacamos algún punto negativo, si queremos hacer un despliegue web con actual
 
 
 
-## 8. Referencias
+## 7. Referencias
 
 [Instalación de Jenkins](https://www.jenkins.io/doc/book/installing/)
 
